@@ -136,13 +136,20 @@ return {
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<leader>uf',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
-        mode = '',
+        mode = 'n',
         desc = '[F]ormat buffer',
-      },
+      }, {
+        '<leader>us',
+        function()
+          require('conform').format { async = true, lsp_format = 'fallback' }
+        end,
+        mode = 'v',
+        desc = '[F]ormat selection',
+      }
     },
     opts = {
       notify_on_error = false,
