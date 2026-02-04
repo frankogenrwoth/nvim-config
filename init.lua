@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
--- disable swap files
+-- remove swap files
 vim.o.swapfile = false
 
 -- line numbers
@@ -37,13 +37,6 @@ vim.o.smartindent = true
 
 -- configure cursor appearance
 vim.o.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
-
--- add local dev plugin top path
--- ~/Documents/backlog.nvim
-local local_dev_path = vim.fn.expand '~/Documents/backlog.nvim'
-if vim.fn.isdirectory(local_dev_path) == 1 then
-  vim.opt.rtp:append(local_dev_path)
-end
 
 -- split behavior
 vim.o.splitright = true
@@ -123,6 +116,7 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup({
+  -- install plugins from plugin files in the "plugins" folder
   { import = 'plugins' },
 }, {
   ui = {
