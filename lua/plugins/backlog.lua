@@ -8,6 +8,8 @@ return {
           toggle = '<leader>bl',
         },
       }
+      -- create a key map that calls backlog
+      vim.api.nvim_set_keymap('n', '<leader>bl', ':Backlog<Cr>', { noremap = true, silent = true })
     end,
   },
 }
