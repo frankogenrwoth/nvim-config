@@ -15,31 +15,20 @@ return {
       { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Help Tags' },
     },
     opts = {
-      mappings = {
-        i = {
-          ['<C-j>'] = 'move_selection_next',
-          ['<C-k>'] = 'move_selection_previous',
-          ['<C-u>'] = false, -- disable page up
-          ['<C-d>'] = false, -- disable page down
+      defaults = {
+        mappings = {
+          i = {
+            ['<C-j>'] = 'move_selection_next',
+            ['<C-k>'] = 'move_selection_previous',
+            ['<C-u>'] = false, -- disable page up
+            ['<C-d>'] = false, -- disable page down
+          },
+          n = {
+            ['q'] = 'close',
+          },
         },
-        n = {
-          ['q'] = 'close',
-        },
+        path_display = { 'smart' },
       },
-      layout_strategy = 'flex',
-      layout_config = {
-        horizontal = {
-          preview_width = 0.55,
-          results_width = 0.8,
-        },
-        vertical = {
-          mirror = false,
-        },
-        flex = {
-          flip_columns = 160,
-        },
-      },
-      path_display = { 'smart' },
     },
     config = function(_, opts)
       local telescope = require 'telescope'
