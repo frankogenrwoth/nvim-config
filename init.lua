@@ -17,6 +17,9 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.o.showmode = false
+-- using jk for entring the normal mode
+vim.keymap.set("i", "jk", "<Esc>")
+vim.opt.timeoutlen = 300
 
 -- set update time to 100ms so that CursorHold events are triggered faster
 vim.opt.updatetime = 150
@@ -36,6 +39,15 @@ vim.o.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+-- move to the first character on the that line ^ and also remap the key B to ^ and E to $
+vim.keymap.set("n", "B", "^")
+vim.keymap.set("n", "E", "$")
+
+-- expand on a floating window for error display or warning
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+vim.keymap.set("n", "[l", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]l", vim.diagnostic.goto_next)
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"

@@ -83,7 +83,22 @@ return {
 		-- They will be installed automatically by mason-tool-installer.
 		---@type table<string, vim.lsp.Config>
 		local servers = {
+			emmet_language_server = {
+				filetypes = {
+					"css",
+					"eruby",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"less",
+					"sass",
+					"scss",
+					"pug",
+					"typescriptreact",
+				},
+			},
 			clangd = {},
+			gopls = { analysis = { staticcheck = true }, staticcheck = true, gofumpt = true },
 			pyright = {
 				settings = {
 					python = {
@@ -99,6 +114,24 @@ return {
 			rust_analyzer = {},
 			ts_ls = {},
 			stylua = {},
+			texlab = {
+				settings = {
+					texlab = {
+						build = {
+							onSave = false, -- VimTeX handles compilation
+						},
+					},
+				},
+			},
+			-- Grammar / spell / style checking via LanguageTool
+			ltex = {
+				filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "xhtml" },
+				settings = {
+					ltex = {
+						language = "en-US",
+					},
+				},
+			},
 			jdtls = {},
 			lua_ls = {
 				on_init = function(client)
@@ -141,7 +174,7 @@ return {
 				return true
 			end,
 		}
-		vim.list_extend(ensure_installed, {})
+		vim.list_extend(ensure_installed, { "ltex-ls" }) -- mason package name for the `ltex` server
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

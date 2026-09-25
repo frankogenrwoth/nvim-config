@@ -76,6 +76,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		vim.keymap.set("n", "<leader>fc", builtin.commands, { desc = "[S]earch [C]ommands" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+		vim.keymap.set("n", "gd", builtin.lsp_definitions)
+		vim.keymap.set("n", "gr", builtin.lsp_references)
+		vim.keymap.set("n", "gi", builtin.lsp_implementations)
+		vim.keymap.set("n", "gt", builtin.lsp_type_definitions)
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("telescope-lsp-attach", { clear = true }),
 			callback = function(event)
